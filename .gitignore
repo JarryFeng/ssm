@@ -1,0 +1,11 @@
+﻿# 忽略idea的配置信息
+
+.idea/
+
+.idea/misc.xml
+.idea/workspace.xml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/libraries
+.idea/libraries/lib.xml
