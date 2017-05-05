@@ -63,6 +63,26 @@
       <version>6.0.4</version>
     </dependency>
 
+    <!-- 以下jar包提供了json的Converter转换器 -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.6.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.6.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.6.3</version>
+    </dependency>
+    <!-- end -->
+
   </dependencies>
   <build>
     <finalName>ssm-parent</finalName>

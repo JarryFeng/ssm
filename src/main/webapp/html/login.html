@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <script src="script/jquery-3.2.1.min.js" />
-    <script src="script/login/login.js" />
+    <script src="../ssm/script/jquery-3.2.1.js"></script>
+    <script src="../ssm/script/login/login.js"></script>
 </head>
 <body>
     <form>
-        用户名:<input name="username" type="text" />
-        密  码:<input name="password" type="text" />
+        用户名:<input name="username" id="username" type="text" />
+        密  码:<input name="password" id="password" type="text" />
         <input type="button" value="提交" onclick="login()"/>
         <input type="reset" value="重置" />
     </form>

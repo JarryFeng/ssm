@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao {
     private DataSource dataSource;
 
     public User login(String username, String password) {
+        User user = null;
         try {
            Connection connection =  dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select * from t_user where username=? and password=?");
@@ -29,13 +30,19 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(2, password);
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getResultSet();
-            while(resultSet.next()) {
+
+            user = new User();
+
+            if(resultSet.next()) {
                 System.out.println("" + resultSet.getString(1));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setAge(resultSet.getInt("age"));
             }
             System.out.println("heihei");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return user;
     }
 }

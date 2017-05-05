@@ -4,14 +4,18 @@
 
 function login() {
     $.ajax({
-        url: "/login",
+        url: "login",
         contextType:"application/json;charset=UTF-8",
-        content : {
+        type: 'POST',
+        data : {
             username : $('#username').val(),
             password : $('#password').val()
         },
-        success:function () {
+        dataType : 'json',
+        success:function (data) {
             alert("成功");
+            alert(data.username);
+
         },
         error : function () {
             alert("失败");

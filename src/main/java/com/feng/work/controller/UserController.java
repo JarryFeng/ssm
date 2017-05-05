@@ -1,5 +1,6 @@
 package com.feng.work.controller;
 
+import com.feng.work.entity.User;
 import com.feng.work.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,15 +18,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String login2page() {
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public String login(@RequestParam String username, @RequestParam String password) {
-        userService.login(username, password);
-        return "yes";
+    public User login(@RequestParam String username, @RequestParam String password) {
+       User user =  userService.login(username, password);
+       return user;
     }
 }
