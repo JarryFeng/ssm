@@ -4,17 +4,17 @@
 
 function login() {
     $.ajax({
-        url: "login",
-        contextType:"application/json;charset=UTF-8",
+        url: "/ssm/login",
+        //contentType:"text/html;charset=utf-8",
         type: 'POST',
         data : {
             username : $('#username').val(),
             password : $('#password').val()
         },
-        dataType : 'json',
+        //dataType : 'json',
         success:function (data) {
             alert("成功");
-            alert(data.username);
+            alert(data);
 
         },
         error : function () {

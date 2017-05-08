@@ -28,14 +28,16 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-  <servlet-mapping>
+  <!-- 不拦截所有的html和js,如果不加会被dispatcher拦截，导致找不到源文件 -->
+  <!-- 或者使用mvc:resource,参看dispatcher-servlet.xml-->
+ <!-- <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.js</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>-->
 
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

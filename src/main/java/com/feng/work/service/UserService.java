@@ -7,7 +7,7 @@ import com.feng.work.entity.User;
  */
 public interface UserService {
 
-    public User queryUser(String username, String password);
+    User queryUser(String username, String password);
 
-    public User login(String username, String password);
+    User login(String username, String password);
 }

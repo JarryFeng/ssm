@@ -6,5 +6,5 @@ import com.feng.work.entity.User;
  * Created by jarry on 2017/5/4.
  */
 public interface UserDao {
-    public User login(String username, String password);
+    User login(String username, String password);
 }

@@ -4,8 +4,8 @@
 
 function login() {
     $.ajax({
-        url: "login",
-        contextType:"application/json;charset=UTF-8",
+        url: "/ssm/login",
+        contentType:"application/json;charset=UTF-8",
         type: 'POST',
         data : {
             username : $('#username').val(),

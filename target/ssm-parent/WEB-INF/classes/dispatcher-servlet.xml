@@ -14,9 +14,15 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <context:component-scan base-package="com.feng.work.controller" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
         <property name="prefix" value="/html/" />
         <property name="suffix" value=".html" />
     </bean>
 
 
+    <!-- springMVC自己处理对静态资源的访问 mapping代表url映射，location代表本地路径-->
+    <mvc:resources mapping="/html/**" location="/html/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <!-- mvc:default-servlet-handler 将静态资源的处理经由Spring MVC框架交回Web应用服务器处理 -->
+    <!--<mvc:default-servlet-handler />-->
 </beans>
