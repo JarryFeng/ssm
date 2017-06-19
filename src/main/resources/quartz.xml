@@ -18,15 +18,6 @@
 
     <!-- 主要将定时任务加入计划中 -->
     <bean id="myScheduleFactoryBean" class="com.feng.work.schedule.MyScheduleFactoryBean" />
-    <!-- -->
-    <!--
-        <property name="triggers">
-            <list>
-                <ref bean="myTrigger"/>
-            </list>
-        </property>
-    </bean>-->
-
 
     <!-- -->
     <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
