@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service;
 public class MyScheduleServiceImpl implements MyScheduleService {
 
     public void doSomething(String arg1) {
-        System.out.println("我被执行了" + arg1);
+        System.out.println("我做了很多事情...." + arg1);
     }
 }

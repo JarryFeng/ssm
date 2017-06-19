@@ -8,7 +8,7 @@
     <!-- 设置定时任务start -->
     <!-- 自定义管理对象 -->
     <bean id="scheduleManager" class="com.feng.work.schedule.MyScheduleManager">
-        <!--<property name="scheduler" ref="myScheduleFactoryBean"/>-->
+        <property name="scheduler" ref="myScheduleFactoryBean"/>
         <property name="serviceMap">
             <map>
                 <entry key="myJob" value-ref="myScheduleServiceImpl"/>
@@ -16,16 +16,16 @@
         </property>
     </bean>
 
-
-
+    <!-- 主要将定时任务加入计划中 -->
+    <bean id="myScheduleFactoryBean" class="com.feng.work.schedule.MyScheduleFactoryBean" />
     <!-- -->
-    <bean id="myScheduleFactoryBean" class="com.feng.work.schedule.MyScheduleFactoryBean">
+    <!--
         <property name="triggers">
             <list>
                 <ref bean="myTrigger"/>
             </list>
         </property>
-    </bean>
+    </bean>-->
 
 
     <!-- -->
