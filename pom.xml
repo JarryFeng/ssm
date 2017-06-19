@@ -57,14 +57,42 @@
       <version>4.3.8.RELEASE</version>
     </dependency>
 
+    <!-- 支持cache -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>4.3.5.RELEASE</version>
+    </dependency>
+
+    <!-- 数据库驱动 -->
     <dependency>
       <groupId>MySQL</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>6.0.4</version>
     </dependency>
 
+    <!-- apache dbcp数据库连接池 -->
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.4</version>
+    </dependency>
+
+    <!-- spring整合mybatis-->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.4</version>
+    </dependency>
+
     <!-- 以下jar包提供了json的Converter转换器 -->
-   <!-- <dependency>
+   <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
       <version>2.6.3</version>
@@ -80,8 +108,22 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
       <version>2.6.3</version>
-    </dependency>-->
+    </dependency>
     <!-- end -->
+
+    <!-- 二级缓存ehcache -->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.11</version>
+    </dependency>
+
+    <!-- 定时任务 -->
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>2.3.0</version>
+    </dependency>
 
   </dependencies>
   <build>

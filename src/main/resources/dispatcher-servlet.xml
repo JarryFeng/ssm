@@ -25,4 +25,12 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <mvc:resources mapping="/js/**" location="/js/" />
     <!-- mvc:default-servlet-handler 将静态资源的处理经由Spring MVC框架交回Web应用服务器处理 -->
     <!--<mvc:default-servlet-handler />-->
+
+   <!-- <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;utf-8</value>
+            </list>
+        </property>
+    </bean>-->
 </beans>
