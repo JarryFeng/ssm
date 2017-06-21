@@ -4,10 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-    <!-- 将包路径下的实体对象都引入进行,并且可以定义别名 -->
-    <typeAliases>
-        <package name="com.feng.work.dao" />
-    </typeAliases>
+    <!-- 设置类的别名,根据包取别名,把包下面的所有类都按类名来取别名 -->
+    <!--<typeAliases>
+        &lt;!&ndash; <typeAlias alias="User" type="com.feng.work.entity.User"/> &ndash;&gt;
+        &lt;!&ndash; 这用可以简化代码量 &ndash;&gt;
+        <package name="com.feng.work"/>
+    </typeAliases>-->
 
    <!-- <environments default="development">
         <environment id="development">
@@ -23,6 +25,8 @@
 
     <!-- -->
     <mappers>
-        <mapper resource="mapper/userMapper.xml" />
+       <!-- <mapper resource="mapper/userMapper.xml" />
+        <mapper resource="mapper/scheduleMapper.xml" />-->
+        <mapper resource="classpath:mapper/**" />
     </mappers>
 </configuration>

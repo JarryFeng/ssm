@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-
+    <!-- 引入定时任务配置信息 -->
     <import resource="quartz.xml" />
 
     <!-- 扫描所有注解 -->
@@ -33,7 +33,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml" />-->
+        <property name="mapperLocations">
+            <value>classpath:mapper/*.xml</value>
+        </property>
         <!--<property name="dataSource" ref="dataSource2" />-->
     </bean>
 
@@ -45,7 +48,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类，交给mybatis处理sql -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.feng.work.dao" />
+        <property name="basePackage" value="com.feng.work.**.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

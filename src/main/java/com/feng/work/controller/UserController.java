@@ -1,7 +1,7 @@
 package com.feng.work.controller;
 
 import com.feng.work.entity.User;
-import com.feng.work.service.UserService;
+import com.feng.work.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

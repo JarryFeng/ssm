@@ -14,9 +14,10 @@
                 <entry key="myJob" value-ref="myScheduleServiceImpl"/>
             </map>
         </property>
+        <property name="scheduleService" ref="scheduleServiceImpl" />
     </bean>
 
-    <!-- 主要将定时任务加入计划中 -->
+    <!-- 初始化执行计划,并将 -->
     <bean id="myScheduleFactoryBean" class="com.feng.work.schedule.MyScheduleFactoryBean" />
 
     <!-- -->

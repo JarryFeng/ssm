@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.work.schedule.dao.ScheduleMapper">
+    <resultMap id="scheduleMap" type="com.feng.work.entity.ScheduleEntity">
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="cronExpresion" column="cron_expresion" jdbcType="VARCHAR" />
+        <result property="triggerName" column="trigger_name" jdbcType="VARCHAR" />
+        <result property="status" column="status" jdbcType="VARCHAR" />
+        <result property="createdate" column="createdate" jdbcType="DATE" />
+        <result property="updatedate" column="updatedate" jdbcType="DATE" />
+    </resultMap>
+
+    <select id="getAllSchedule" resultMap="scheduleMap">
+      select * from t_schedule where status='0'
+    </select>
+</mapper>

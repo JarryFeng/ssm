@@ -1,14 +1,18 @@
 package com.feng.work.schedule;
 
+import com.feng.work.entity.ScheduleEntity;
 import com.feng.work.schedule.service.MyScheduleService;
+import com.feng.work.schedule.service.ScheduleService;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.TriggerKey;
 import org.quartz.impl.triggers.CronTriggerImpl;
 import org.springframework.scheduling.Trigger;
+import org.springframework.util.StringUtils;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,11 +25,17 @@ public class MyScheduleManager {
 
     private Map<String, MyScheduleService> serviceMap;
 
-    public void doSomething(String jobKey, String args1) throws SchedulerException, ParseException {
+    private ScheduleService scheduleService;
+
+    public void doSomething(String jobKey, String args1) {
         //处理真正的业务
         doRealThings(jobKey, args1);
         //看看执行计划是否有变化
-        doScheduleJob(jobKey);
+        try {
+            doScheduleJob(jobKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -39,11 +49,15 @@ public class MyScheduleManager {
         //CronTriggerImpl trigger = (CronTriggerImpl)scheduler.getTriggersOfJob(new JobKey(jobKey, Scheduler.DEFAULT_GROUP)).get(0);
         CronTriggerImpl trigger = (CronTriggerImpl)scheduler.getTrigger(new TriggerKey(name, Scheduler.DEFAULT_GROUP));
 
-        String expression = "0 * 0/1 * * ?";
-        if(!trigger.getCronExpression().equals(expression)) {
-            System.out.println("我要重置了");
-            trigger.setCronExpression(expression);
-            scheduler.rescheduleJob(new TriggerKey(name, Scheduler.DEFAULT_GROUP), trigger);
+        List<ScheduleEntity> scheduleEntityList = scheduleService.getAllSchedule();
+        for(ScheduleEntity scheduleEntity : scheduleEntityList){
+            if(!StringUtils.isEmpty(scheduleEntity.getTriggerName()) && scheduleEntity.getTriggerName().equals(name)) {
+                if(!trigger.getCronExpression().equals(scheduleEntity.getCronExpresion())) {
+                    System.out.println("我要重置了");
+                    trigger.setCronExpression(scheduleEntity.getCronExpresion());
+                    scheduler.rescheduleJob(new TriggerKey(name, Scheduler.DEFAULT_GROUP), trigger);
+                }
+            }
         }
     }
 
@@ -69,5 +83,9 @@ public class MyScheduleManager {
 
     public void setServiceMap(Map<String, MyScheduleService> serviceMap) {
         this.serviceMap = serviceMap;
+    }
+
+    public void setScheduleService(ScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
     }
 }
