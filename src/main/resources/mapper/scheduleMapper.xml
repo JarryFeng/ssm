@@ -7,6 +7,7 @@
         <id property="id" column="id" jdbcType="INTEGER" />
         <result property="cronExpresion" column="cron_expresion" jdbcType="VARCHAR" />
         <result property="triggerName" column="trigger_name" jdbcType="VARCHAR" />
+        <result property="triggerCode" column="trigger_code" jdbcType="VARCHAR" />
         <result property="status" column="status" jdbcType="VARCHAR" />
         <result property="createdate" column="createdate" jdbcType="DATE" />
         <result property="updatedate" column="updatedate" jdbcType="DATE" />
@@ -14,5 +15,20 @@
 
     <select id="getAllSchedule" resultMap="scheduleMap">
       select * from t_schedule where status='0'
+    </select>
+
+    <select id="findByCondition" resultMap="scheduleMap" parameterType="java.util.Map">
+      select * from t_schedule
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+            <if test="triggerCode != null">
+                and trigger_code=#{triggerCode}
+            </if>
+            <if test="triggerName != null">
+                and trigger_name=#{triggerName}
+            </if>
+        </where>
     </select>
 </mapper>

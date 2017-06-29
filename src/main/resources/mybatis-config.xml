@@ -22,11 +22,18 @@
             </dataSource>
         </environment>
     </environments>-->
+    <settings>
+        <!-- logImpl可选的值有：SLF4J、LOG4J、LOG4J2、JDK_LOGGING、COMMONS_LOGGING、STDOUT_LOGGING、NO_LOGGING
+        或者是实现了接口org.apache.ibatis.logging.Log的类的完全限定类名，
+        并且这个类的构造函数需要是以一个字符串（String类型）为参数的。
+        (可以参考org.apache.ibatis.logging.slf4j.Slf4jImpl.java的实现)-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
 
     <!-- -->
-    <mappers>
-       <!-- <mapper resource="mapper/userMapper.xml" />
-        <mapper resource="mapper/scheduleMapper.xml" />-->
-        <mapper resource="classpath:mapper/**" />
-    </mappers>
+    <!--<mappers>-->
+        <!--&lt;!&ndash; 这边无法通配,只能一个个写,如果要通配使用与spring整合的扫描器去做这件事 &ndash;&gt;-->
+        <!--<mapper resource="mapper/userMapper.xml" />-->
+        <!--<mapper resource="mapper/scheduleMapper.xml" />-->
+    <!--</mappers>-->
 </configuration>

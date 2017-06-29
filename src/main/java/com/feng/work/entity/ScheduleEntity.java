@@ -12,6 +12,8 @@ public class ScheduleEntity {
 
     private String triggerName;
 
+    private String triggerCode;
+
     private String status;
 
     private Date createdate;
@@ -40,6 +42,14 @@ public class ScheduleEntity {
 
     public void setTriggerName(String triggerName) {
         this.triggerName = triggerName;
+    }
+
+    public String getTriggerCode() {
+        return triggerCode;
+    }
+
+    public void setTriggerCode(String triggerCode) {
+        this.triggerCode = triggerCode;
     }
 
     public String getStatus() {
