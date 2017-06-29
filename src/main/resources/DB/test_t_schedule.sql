@@ -1,0 +1,2 @@
+INSERT INTO test.t_schedule (cron_expresion, trigger_code, status, createdate, updatedate, trigger_name) VALUES ('0/30 * * 1 * ?', 'myTrigger', '0', '2017-06-20', '2017-06-20', '定时任务');
+INSERT INTO test.t_schedule (cron_expresion, trigger_code, status, createdate, updatedate, trigger_name) VALUES ('0/31 * * 1 * ?', 'myTrigger2', '0', '2017-06-27', '2017-06-27', '任务');
