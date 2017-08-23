@@ -16,19 +16,40 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <context:property-placeholder location="classpath:datasource.properties"/>
 
     <!-- 配置数据源-->
-    <bean id="dataSource2" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-        <property name="username" value="${jdbc.username}"/>
-        <property name="url" value="${jdbc.url}" />
-        <property name="driverClassName" value="${jdbc.driveClassName}" />
-        <property name="password" value="${jdbc.password}" />
+    <bean id="dataSource02" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <property name="username" value="${jdbc.username2}"/>
+        <property name="url" value="${jdbc.url2}" />
+        <property name="driverClassName" value="${jdbc.driveClassName2}" />
+        <property name="password" value="${jdbc.password2}" />
     </bean>
 
     <!-- 使用数据库连接池管理数据库连接 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="username" value="${jdbc.username}"/>
-        <property name="url" value="${jdbc.url}" />
-        <property name="driverClassName" value="${jdbc.driveClassName}" />
-        <property name="password" value="${jdbc.password}" />
+    <bean id="dataSource01" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="username" value="${jdbc.username1}"/>
+        <property name="url" value="${jdbc.url1}" />
+        <property name="driverClassName" value="${jdbc.driveClassName1}" />
+        <property name="password" value="${jdbc.password1}" />
+    </bean>
+
+    <!-- 切换数据源-->
+    <bean id="dataSource" class="com.feng.work.utils.DynamicDataSource">
+        <!-- 数据库集合 -->
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="D01" value-ref="dataSource01"/>
+                <entry key="D02" value-ref="dataSource02"/>
+            </map>
+        </property>
+
+        <!-- 设置默认数据库 -->
+        <property name="defaultTargetDataSource" ref="dataSource01" />
+    </bean>
+
+    <!-- 默认数据库 -->
+    <bean id="defaultDataSource" class="java.lang.String">
+        <constructor-arg>
+            <value>D01</value>
+        </constructor-arg>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
